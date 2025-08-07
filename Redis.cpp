@@ -38,6 +38,10 @@ void Redis::setServable(bool serve)
 {
 	canServe = serve;
 }
+void Redis::setAddress(std::string address)
+{
+	this->address = address;
+}
 bool Redis::isServable() const
 {
 	return canServe;
@@ -48,7 +52,7 @@ int Redis::serve()
 	canServe = true;
 
 	serverAddr.sin_family = AF_INET;
-	serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1"); // Listen on all interfaces
+	serverAddr.sin_addr.s_addr = inet_addr(address.c_str()); // Listen on all interfaces
 	serverAddr.sin_port = htons(port);
 
 	if (!testedOnce)

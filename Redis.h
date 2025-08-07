@@ -22,6 +22,7 @@ public:
 
 	int serve();
 	int start();
+	void setAddress(std::string address);
 	void setServable(bool);
 	bool isServable() const;
 
@@ -33,6 +34,7 @@ public:
 
 protected:
 	int port;
+	std::string address = "127.0.0.1";
 	bool canServe = false;
 
 	int currColor = 0;
